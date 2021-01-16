@@ -1,0 +1,15 @@
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\bin\Debug\Trips.exe.config
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\bin\Debug\Trips.exe
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\bin\Debug\Trips.pdb
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.csprojAssemblyReference.cache
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Travel.g.cs
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\App.g.cs
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips_MarkupCompile.cache
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips_MarkupCompile.lref
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Travel.baml
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.g.resources
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.Properties.Resources.resources
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.csproj.GenerateResource.cache
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.csproj.CoreCompileInputs.cache
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.exe
+C:\John Abbott IPD 22\C# 2\Trips_WPF\Trips\Trips\obj\Debug\Trips.pdb
