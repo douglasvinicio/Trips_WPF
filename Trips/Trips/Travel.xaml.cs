@@ -120,6 +120,12 @@ namespace Trips
                 return;
             }
 
+            if (txtDestination.Text == "" || txtName.Text == "" || txtPassport.Text == "")
+            {
+                MessageBox.Show("Please review your trip information. It cannot have blank fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string newDestination = txtDestination.Text;
             string newName = txtName.Text;
             string newPassport = txtPassport.Text;

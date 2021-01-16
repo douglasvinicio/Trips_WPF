@@ -52,6 +52,10 @@ namespace Trips
                 {
                     throw new InvalidDataException("It contains a invalid character ';'. Please remove it and try it again.");
                 }
+                if (value == "")
+                {
+                    throw new InvalidDataException("The Destination field cannot be empty. Please review your Trip information and try again");
+                }
                 _destination = value;
             }
         }
