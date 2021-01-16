@@ -73,6 +73,10 @@ namespace Trips
                 {
                     throw new InvalidDataException("It contains a invalid character ';'. Please remove it and try it again.");
                 }
+                if (value == "")
+                {
+                    throw new InvalidDataException("The Name field cannot be empty. Please review your Trip information and try again");
+                }
                 _name = value;
             }
         }
@@ -93,11 +97,45 @@ namespace Trips
                 {
                     throw new InvalidDataException("Passport must have between 1 to 20 characters and no special characters.");
                 }
+                if (value == "")
+                {
+                    throw new InvalidDataException("The Destination field cannot be empty. Please review your Trip information and try again");
+                }
                 _passport = value;
             }
         }
-        public string DepartureDate { get; set; }
-        public string ReturnDate { get; set; }
+
+        private string _departureDate;
+        public string DepartureDate
+        {
+            get
+            {
+                return _departureDate;
+            }
+
+            set
+            {
+                if (value == "")
+                {
+                    throw new InvalidDataException("The Departure Date field cannot be empty. Please review your Trip information and try again");
+                }
+                _departureDate = value;
+            }
+        }
+
+        private string _returnDate;
+        public string ReturnDate
+        {
+            get
+            {
+                return _returnDate;
+            }
+            set
+            {
+                // Allows user to neglet return date
+                _returnDate = value;
+            }
+        }
 
         public virtual string ToDataString()
         {

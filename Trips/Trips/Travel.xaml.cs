@@ -60,6 +60,13 @@ namespace Trips
 
         private void btnAddTrip_Click(object sender, RoutedEventArgs e)
         {
+            // validating fields before adding to the list
+            if (txtDestination.Text == "" || txtName.Text == "" || txtPassport.Text == "" || dpDepartureDate.Text == "")
+            {
+                MessageBox.Show("Please review your trip information. It cannot have blank fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string destination = txtDestination.Text;
             string name = txtName.Text;
             string passport = txtPassport.Text;
