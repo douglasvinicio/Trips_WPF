@@ -9,6 +9,7 @@ namespace Trips
 {
     class Trip
     {
+        // Custom InvalidDataException with string message as parameter
         public class InvalidDataException : Exception
         {
             public InvalidDataException(string msg) : base(msg) { }
@@ -81,6 +82,7 @@ namespace Trips
             }
             set
             {
+                // Validating with Regex for passport
                 string pattern = @"^[A-Za-z 0-9,\-.]{1,20}$";
                 Regex rg = new Regex(pattern);
                 if (!rg.IsMatch(value))
@@ -90,17 +92,8 @@ namespace Trips
                 _passport = value;
             }
         }
-
-        private string _departureDate;
         public string DepartureDate { get; set; }
-
-        private string _returnDate;
         public string ReturnDate { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("{0};{1};{2};{3};{4}", Destination, Name, Passport, DepartureDate, ReturnDate); // testing purposes
-        }
 
         public virtual string ToDataString()
         {

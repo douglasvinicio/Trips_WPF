@@ -113,6 +113,13 @@ namespace Trips
 
         private void btnUpdateTrip_Click(object sender, RoutedEventArgs e)
         {
+            // Checking if at least one item is selected before updating ( Update button isSelected attribute is False ) 
+            if (lvTripList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select at least one item", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string newDestination = txtDestination.Text;
             string newName = txtName.Text;
             string newPassport = txtPassport.Text;
