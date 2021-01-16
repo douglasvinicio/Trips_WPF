@@ -3,3 +3,4 @@ Amsterdan;Jane Doe;XYZ9876;4/16/2021;3/31/2022
 Cali;Maria;CCN000;6/9/2021;2/4/2022
 Rio De Janeiro;Michael Jordan;99990;1/5/2021;2/4/2022
 Italy;Kobe Bryant;24-8;3/19/2021;5/27/2021
+Vancouver;Douglas;Mdg34;6/11/2021;

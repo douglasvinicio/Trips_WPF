@@ -28,6 +28,7 @@ namespace Trips
             LoadDataFromFile();
         }
 
+        // Load File method
         private void LoadDataFromFile()
         {
             if (File.Exists(DataFileName))
@@ -58,6 +59,30 @@ namespace Trips
             lvTripList.ItemsSource = TripList;
         }
 
+        // Selected Listview Item
+        private void lvTripList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Activating buttons when Item in the list is selected
+            btnUpdateTrip.IsEnabled = true;
+            btnDeleteTrip.IsEnabled = true;
+
+
+            var selectedTrip = lvTripList.SelectedItem;
+
+            if (selectedTrip is Trip)
+            {
+                Trip trip = (Trip)lvTripList.SelectedItem;
+
+                // Assigning values as an object inside the application
+                txtDestination.Text = trip.Destination;
+                txtName.Text = trip.Name;
+                txtPassport.Text = trip.Passport;
+                dpDepartureDate.Text = trip.DepartureDate;
+                dpReturnDate.Text = trip.ReturnDate;
+            }
+        }
+
+        // Add trip button
         private void btnAddTrip_Click(object sender, RoutedEventArgs e)
         {
             // validating fields before adding to the list
@@ -73,51 +98,13 @@ namespace Trips
             string departureDate = dpDepartureDate.Text;
             string returnDate = dpReturnDate.Text;
 
-            Trip trip = new Trip(destination,name,passport,departureDate,returnDate);
+            Trip trip = new Trip(destination, name, passport, departureDate, returnDate);
             TripList.Add(trip);
 
             ResetValues();
         }
 
-        private void lvTripList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Activating buttons when Item in the list is selected
-            btnUpdateTrip.IsEnabled = true;
-            btnDeleteTrip.IsEnabled = true;
-
-
-            var selectedTrip = lvTripList.SelectedItem;
-
-            if (selectedTrip is Trip)
-            {
-                Trip trip = (Trip)lvTripList.SelectedItem;
-
-
-                // Assigning values as an object inside the application
-                txtDestination.Text = trip.Destination;
-                txtName.Text = trip.Name;
-                txtPassport.Text = trip.Passport;
-                dpDepartureDate.Text = trip.DepartureDate;
-                dpReturnDate.Text = trip.ReturnDate;
-            }
-        }
-
-        public void SaveFile()
-        {
-            using (StreamWriter writer = new StreamWriter(DataFileName))
-            {
-                foreach (Trip trip in TripList)
-                {
-                    writer.WriteLine(trip.ToDataString());
-                }
-            }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            SaveFile();
-        }
-
+        // Update trip button
         private void btnUpdateTrip_Click(object sender, RoutedEventArgs e)
         {
             // Checking if at least one item is selected before updating ( Update button isSelected attribute is False ) 
@@ -150,6 +137,38 @@ namespace Trips
             ResetValues();
         }
 
+        // Delete trip Button
+        private void btnDeleteTrip_Click(object sender, RoutedEventArgs e)
+        {
+            Trip tripDelete = (Trip)lvTripList.SelectedItem;
+            TripList.Remove(tripDelete);
+
+            ResetValues();
+        }
+
+        // Save to .trips file button
+        private void btnSaveSelected_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Trip file (*.trip)|*.trip";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                {
+                    foreach (Trip trip in TripList)
+                    {
+                        writer.WriteLine(trip.ToDataString());
+                    }
+                }
+            }
+        }
+
+        // Save the data to file once the window is closed
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveFile();
+        }
+
         private void ResetValues()
         {
             lvTripList.Items.Refresh();
@@ -163,26 +182,13 @@ namespace Trips
             btnDeleteTrip.IsEnabled = false;
         }
 
-        private void btnDeleteTrip_Click(object sender, RoutedEventArgs e)
+        public void SaveFile()
         {
-            Trip tripDelete = (Trip)lvTripList.SelectedItem;
-            TripList.Remove(tripDelete);
-
-            ResetValues();
-        }
-
-        private void btnSaveSelected_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Trip file (*.trip)|*.trip";
-            if (saveFileDialog.ShowDialog() == true)
+            using (StreamWriter writer = new StreamWriter(DataFileName))
             {
-                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                foreach (Trip trip in TripList)
                 {
-                    foreach (Trip trip in TripList)
-                    {
-                        writer.WriteLine(trip.ToDataString());
-                    }
+                    writer.WriteLine(trip.ToDataString());
                 }
             }
         }
